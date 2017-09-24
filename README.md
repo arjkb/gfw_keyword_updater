@@ -12,4 +12,4 @@ Keywords used for this project are in the file `english_words_list.txt`. Words i
 ### Collaborators
 
 1. [Ashraf Siddiquee](https://github.com/mashrafsiddiquee)
-2. Humayra Tasnim, University of New Mexico
+2. Humayra Tasnim
