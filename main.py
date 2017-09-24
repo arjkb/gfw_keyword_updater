@@ -9,6 +9,13 @@
 
 import argparse
 import requests
+import signal
+
+class TimeoutException(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutException
 
 def read_lines(filename):
     contents = list()
@@ -50,11 +57,18 @@ def main():
     keywords = read_lines(args.words_file)
     print(keywords[0])
 
-
-    for keyword in keywords:
-        blocked_keyword = is_blocked_keyword(keyword, urls)
-        if blocked_keyword:
-            print(keyword + " is blocked")
+    signal.signal(signal.SIGALRM, timeout_handler)
+    for keyword in keywords[275:285]:
+        signal.alarm(60)
+        try:
+            blocked_keyword = is_blocked_keyword(keyword, urls)
+        except TimeoutException:
+            print(" Timeout! ", keyword)
+            continue
+        else:
+            signal.alarm(0)
+            if blocked_keyword:
+                print(keyword + " is blocked")
 
 if __name__ == '__main__':
     main()
