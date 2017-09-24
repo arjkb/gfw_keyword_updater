@@ -10,9 +10,6 @@
 import argparse
 import requests
 
-def get_query_url(base_url, keyword):
-    return base_url + "/?q=" + keyword
-
 def read_lines(filename):
     contents = list()
     with open(filename, 'r') as f:
@@ -53,7 +50,6 @@ def main():
     keywords = read_lines(args.words_file)
     print(keywords[0])
 
-    print(get_query_url(urls[0], keywords[0]))
 
     for keyword in keywords:
         blocked_keyword = is_blocked_keyword(keyword, urls)
