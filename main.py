@@ -35,8 +35,8 @@ def is_blocked_keyword(keyword, urls):
             except requests.exceptions.ConnectionError:
                 blocked_count += 1
 
-    print(blocked_count, worked_count, blocked_count/worked_count)
-    if (blocked_count/worked_count > 0.7):
+    print(keyword, blocked_count, worked_count)
+    if (blocked_count > worked_count):
         return True
     else:
         return False
@@ -59,8 +59,6 @@ def main():
         blocked_keyword = is_blocked_keyword(keyword, urls)
         if blocked_keyword:
             print(keyword + " is blocked")
-        else:
-            print(keyword + " is NOT blocked")
 
 if __name__ == '__main__':
     main()
