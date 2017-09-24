@@ -37,7 +37,7 @@ def is_blocked_keyword(keyword, urls):
             except:
                 pass
 
-    print(keyword, blocked_count, worked_count)
+    print(blocked_count, worked_count, keyword)
     if (blocked_count >= worked_count):
         return True
     else:
