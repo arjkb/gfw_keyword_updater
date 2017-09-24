@@ -34,6 +34,8 @@ def is_blocked_keyword(keyword, urls):
                     worked_count += 1
             except requests.exceptions.ConnectionError:
                 blocked_count += 1
+            except:
+                pass
 
     print(keyword, blocked_count, worked_count)
     if (blocked_count > worked_count):
