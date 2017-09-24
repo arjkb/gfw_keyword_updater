@@ -8,6 +8,7 @@
 # add the word to the list of banned keywords
 
 import argparse
+import requests
 
 def get_query_url(base_url, keyword):
     return base_url + "/?q=" + keyword
@@ -18,6 +19,27 @@ def read_lines(filename):
         for line in f:
             contents.append(line.strip())
     return contents
+
+def is_blocked_keyword(keyword, urls):
+    max_iterations = 1
+    blocked_count = 0
+    worked_count = 0
+    for url in urls:
+        query_url = get_query_url(url, keyword)
+        # print(query_url)
+        for i in range(max_iterations):
+            try:
+                r = requests.get(query_url)
+                if r.status_code == requests.codes.ok:
+                    worked_count += 1
+            except requests.exceptions.ConnectionError:
+                blocked_count += 1
+
+    print(blocked_count, worked_count, blocked_count/worked_count)
+    if (blocked_count/worked_count > 0.7):
+        return True
+    else:
+        return False
 
 def main():
     parser = argparse.ArgumentParser()
@@ -32,6 +54,13 @@ def main():
     print(keywords[0])
 
     print(get_query_url(urls[0], keywords[0]))
+
+    for keyword in keywords:
+        blocked_keyword = is_blocked_keyword(keyword, urls)
+        if blocked_keyword:
+            print(keyword + " is blocked")
+        else:
+            print(keyword + " is NOT blocked")
 
 if __name__ == '__main__':
     main()
