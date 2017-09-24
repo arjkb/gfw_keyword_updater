@@ -9,6 +9,9 @@
 
 import argparse
 
+def get_query_url(base_url, keyword):
+    return base_url + "/?q=" + keyword
+
 def read_lines(filename):
     contents = list()
     with open(filename, 'r') as f:
@@ -23,10 +26,12 @@ def main():
     args = parser.parse_args()
 
     urls = read_lines(args.urls_file)
-    print(urls)
+    print(urls[0])
 
     keywords = read_lines(args.words_file)
-    print(keywords)
+    print(keywords[0])
+
+    print(get_query_url(urls[0], keywords[0]))
 
 if __name__ == '__main__':
     main()
