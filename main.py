@@ -58,7 +58,7 @@ def main():
     print(keywords[0])
 
     signal.signal(signal.SIGALRM, timeout_handler)
-    for keyword in keywords[275:285]:
+    for keyword in keywords:
         signal.alarm(60)
         try:
             blocked_keyword = is_blocked_keyword(keyword, urls)
