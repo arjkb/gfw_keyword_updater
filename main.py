@@ -25,11 +25,9 @@ def is_blocked_keyword(keyword, urls):
     blocked_count = 0
     worked_count = 0
     for url in urls:
-        query_url = get_query_url(url, keyword)
-        # print(query_url)
         for i in range(max_iterations):
             try:
-                r = requests.get(query_url)
+                r = requests.get(url, params={'t': keyword})
                 if r.status_code == requests.codes.ok:
                     worked_count += 1
             except requests.exceptions.ConnectionError:
