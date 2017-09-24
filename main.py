@@ -26,9 +26,7 @@ def main():
     print(urls)
 
     keywords = read_lines(args.words_file)
-    print(keywords)
-
-    print(args.words_file, args.urls_file)
+    print(keywords
 
 if __name__ == '__main__':
     main()
