@@ -1,4 +1,4 @@
-# gfw_english_words
+# gfw_keyword_updater
 
 Project intended to update the list of keywords blocked by GFW.
 
