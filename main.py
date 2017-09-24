@@ -22,6 +22,9 @@ def main():
     parser.add_argument("urls_file", help="file containing all the urls", type=str)
     args = parser.parse_args()
 
+    urls = read_lines(args.urls_file)
+    print(urls)
+
     print(args.words_file, args.urls_file)
 
 if __name__ == '__main__':
