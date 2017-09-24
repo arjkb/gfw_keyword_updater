@@ -9,6 +9,13 @@
 
 import argparse
 
+def read_lines(filename):
+    contents = list()
+    with open(filename, 'r') as f:
+        for line in f:
+            contents.append(line.strip())
+    return contents
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("words_file", help="file containing all the words", type=str)
