@@ -15,6 +15,11 @@ Keywords used for this project are in the file `english_words_list.txt`. Words i
 
 The results of our preliminary run of the script are in the directory [`outputs/`](https://github.com/arjunkrishnababu96/gfw_keyword_updater/tree/master/outputs).
 
+##### DISCLAIMER
+This is a student project. There is a very high probability that our methodology for filtering out the words blocked by GFW is wrong.
+
+So don't rely on this.
+
 ##### USEFUL LINKS
 * [https://en.wikipedia.org/wiki/Great_Firewall](https://en.wikipedia.org/wiki/Great_Firewall)
 * [https://citizenlab.ca/2015/04/chinas-great-cannon/](https://citizenlab.ca/2015/04/chinas-great-cannon/)
